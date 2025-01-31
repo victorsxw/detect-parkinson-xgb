@@ -143,3 +143,18 @@ scores = cross_val_score(xgb_model, X, y, cv=5, scoring='recall')
 5. **降低假阴性**：调整分类阈值或使用代价敏感学习。
 
 通过上述优化，可进一步提升模型在医疗诊断中的可靠性和实用性。
+
+
+
+
+
+运行注意事项：
+1 版本问题；!pip install scikit-learn==1.5.2 xgboost==1.7.6
+2 关于 关系矩阵 取值把表头去除的问题： 
+# Select only numerical columns
+numerical_df = df.select_dtypes(include=['number'])  
+# Calculate the correlation matrix using the numerical columns
+corr_map = numerical_df.corr()  
+3 关于 相关性特征值 排序也有取值把表头去除的问题：
+numerical_df = df.select_dtypes(include=['number'])  
+correlation_values = numerical_df.corr()['status']
